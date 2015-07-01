@@ -88,11 +88,11 @@ Public Function calcWorkTime(maxWorkTime as Double,worktime as Double,manualTime
 	    calcWorkTime = maxWorkTime - breakTime
     End If
 End Function
-
-Public Function calc6(t1 as Double,t2 as Double,t3 as Double,t4 as Double,t5 as Double,t6 as Double,manualTime as Double) as Double
+ 
+Public Function calc6(t1 as Double,t2 as Double,t3 as Double,t4 as Double,t5 as Double,t6 as Double, manualTime as Double) as Double
 	Dim workTime, maxWorkTime As Double
 	If (manualTime = 0) Then
-		worktime = ABS(t1-t2) + ABS(t3-t4) + ABS(t5-t6)
+		workTime = ABS(t1-t2) + ABS(t3-t4) + ABS(t5-t6)
     	maxWorkTime = ABS(t1-t6)
 	End If
     calc6 = calcWorkTime(maxWorkTime,workTime,manualTime)
@@ -102,7 +102,7 @@ Public Function calc4(t1 as Double,t2 as Double,t3 as Double,t4 as Double, manua
 	Dim workTime, maxWorkTime As Double
 	
 	If (manualTime = 0) Then
-		worktime = ABS(t1-t2) + ABS(t3-t4)
+		workTime = ABS(t1-t2) + ABS(t3-t4)
     	maxWorkTime = ABS(t1-t4)
     End If
    	calc4 = calcWorkTime(maxWorkTime,workTime,manualTime)
