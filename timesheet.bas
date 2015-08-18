@@ -6,7 +6,7 @@ Public Function minBreakTime(ByVal workTime As Double, ByVal breakTime As Double
     breakTime = breakTime * 24
 
     If workTime <= 6 Then
-    	minBreak = 0
+        minBreak = 0
     ElseIf workTime <= 9 Then
         minBreak = 30# / 60#
     Else
@@ -61,7 +61,7 @@ Public Function sickDay(text As String) As Integer
 End Function
 
 Public Function isHoliday(text As String) As Boolean
-     isHoliday = text Like "FREI*"
+    isHoliday = text Like "FREI*"
 End Function
 
 Public Function expectedWorktime(actualWorkTime As Double, comment As String, defaultWorkTime As Double) As Double
@@ -75,36 +75,35 @@ Public Function expectedWorktime(actualWorkTime As Double, comment As String, de
 End Function
 
 Public Function calcWorkTime(maxWorkTime as Double,worktime as Double,manualTime as Double) as Double
-	Dim breakTime As Double
-	IF (manualTime > 0) Then
-		calcWorkTime = manualTime
-	Else
-		If(worktime > 0) Then
-    		breakTime = maxWorkTime - workTime
-	    End If
-    	breakTime = CDate(minBreakTime(maxWorkTime, breakTime))
-    
-   		'MsgBox "maxWorkTime "&Format(maxWorkTime, "[h]:mm") & chr(13) & "worktime "&Format(worktime, "[h]:mm") & chr(13) & "breakTime "&Format(breakTime, "[h]:mm")
-	    calcWorkTime = maxWorkTime - breakTime
+    Dim breakTime As Double
+    If (manualTime > 0) Then
+        calcWorkTime = manualTime
+    Else
+        If(worktime > 0) Then
+            breakTime = maxWorkTime - workTime
+        End If
+        breakTime = CDate(minBreakTime(maxWorkTime, breakTime))
+
+        'MsgBox "maxWorkTime "&Format(maxWorkTime, "[h]:mm") & chr(13) & "worktime "&Format(worktime, "[h]:mm") & chr(13) & "breakTime "&Format(breakTime, "[h]:mm")
+        calcWorkTime = maxWorkTime - breakTime
     End If
 End Function
- 
+
 Public Function calc6(t1 as Double,t2 as Double,t3 as Double,t4 as Double,t5 as Double,t6 as Double, manualTime as Double) as Double
-	Dim workTime, maxWorkTime As Double
-	If (manualTime = 0) Then
-		workTime = ABS(t1-t2) + ABS(t3-t4) + ABS(t5-t6)
-    	maxWorkTime = ABS(t1-t6)
-	End If
+    Dim workTime, maxWorkTime As Double
+    If (manualTime = 0) Then
+        workTime = ABS(t1-t2) + ABS(t3-t4) + ABS(t5-t6)
+        maxWorkTime = ABS(t1-t6)
+    End If
     calc6 = calcWorkTime(maxWorkTime,workTime,manualTime)
 End Function
 
 Public Function calc4(t1 as Double,t2 as Double,t3 as Double,t4 as Double, manualTime as Double) as Double
-	Dim workTime, maxWorkTime As Double
-	
-	If (manualTime = 0) Then
-		workTime = ABS(t1-t2) + ABS(t3-t4)
-    	maxWorkTime = ABS(t1-t4)
+    Dim workTime, maxWorkTime As Double
+    If (manualTime = 0) Then
+        workTime = ABS(t1-t2) + ABS(t3-t4)
+        maxWorkTime = ABS(t1-t4)
     End If
-   	calc4 = calcWorkTime(maxWorkTime,workTime,manualTime)
+    calc4 = calcWorkTime(maxWorkTime,workTime,manualTime)
 End Function
 
